@@ -3,7 +3,7 @@ package ma.ensa.dto;
 import lombok.Data;
 import ma.ensa.model.enumer.IDENTITE;
 import ma.ensa.model.enumer.PAYS;
-import ma.ensa.model.enumer.Role;
+import ma.ensa.model.enumer.ROLE;
 import ma.ensa.model.enumer.TITRE;
 
 import java.util.Date;
@@ -29,5 +29,5 @@ public class AgentDTO {
     private Long gsm;
     private String email;
     private String matricule;
-    private Role role;
+    private ROLE role;
 }
