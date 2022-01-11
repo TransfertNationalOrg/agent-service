@@ -9,5 +9,5 @@ import java.util.List;
 @FeignClient(name="transfert-service")
 public interface TransfertFeign {
     @GetMapping("/transfert/{idAgent}")
-    List<TransfertDTO> getTransfertsByClient(@PathVariable("idAgent") Long idClient);
+    List<TransfertDTO> getTransfertsByAgent(@PathVariable("idAgent") Long idClient);
 }

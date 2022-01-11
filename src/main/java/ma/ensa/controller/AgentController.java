@@ -1,6 +1,8 @@
 package ma.ensa.controller;
 
 import lombok.Data;
+import ma.ensa.Transfert.TransfertDTO;
+import ma.ensa.Transfert.TransfertFeign;
 import ma.ensa.converter.AgentConverter;
 import ma.ensa.dto.AgentDTO;
 import ma.ensa.service.AgentService;
@@ -17,6 +19,7 @@ public class AgentController {
 
     final AgentService agentService;
     final AgentConverter agentConverter;
+    final TransfertFeign transfertFeign;
 
     @PostMapping("/")
     public ResponseEntity<?> save( @RequestBody AgentDTO agentDTO) throws Exception {
@@ -45,6 +48,12 @@ public class AgentController {
     @GetMapping("/")
     public ResponseEntity<List<AgentDTO>> findAll() {
         return ResponseEntity.ok().body(agentConverter.convertToDTOs(agentService.findAll()));
+    }
+
+    //Get all transferts by agent from transfert-service
+    @GetMapping("/allTransferts/{idAgent}")
+    public List<TransfertDTO> getAllTransfertsByAgent(@PathVariable("idAgent") Long idAgent){
+        return transfertFeign.getTransfertsByAgent(idAgent);
     }
 
 }
