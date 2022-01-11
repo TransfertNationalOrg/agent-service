@@ -5,6 +5,7 @@ import ma.ensa.Transfert.TransfertDTO;
 import ma.ensa.Transfert.TransfertFeign;
 import ma.ensa.converter.AgentConverter;
 import ma.ensa.dto.AgentDTO;
+import ma.ensa.repository.AgentRepository;
 import ma.ensa.service.AgentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,8 @@ public class AgentController {
     final AgentService agentService;
     final AgentConverter agentConverter;
     final TransfertFeign transfertFeign;
+
+    final AgentRepository agentRepository;
 
     @PostMapping("/")
     public ResponseEntity<?> save( @RequestBody AgentDTO agentDTO) throws Exception {
@@ -54,6 +57,12 @@ public class AgentController {
     @GetMapping("/allTransferts/{idAgent}")
     public List<TransfertDTO> getAllTransfertsByAgent(@PathVariable("idAgent") Long idAgent){
         return transfertFeign.getTransfertsByAgent(idAgent);
+    }
+
+    //Get agent by id
+    @GetMapping("/{id}")
+    public AgentDTO getAgentById(@PathVariable("id") Long id){
+        return agentConverter.convertToDTO(agentRepository.getById(id));
     }
 
 }
