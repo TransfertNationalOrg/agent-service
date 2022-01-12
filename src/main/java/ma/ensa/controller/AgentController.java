@@ -18,9 +18,9 @@ import java.util.List;
 @Data
 public class AgentController {
 
-    final AgentService agentService;
-    final AgentConverter agentConverter;
-    final TransfertFeign transfertFeign;
+    private final AgentService agentService;
+    private final AgentConverter agentConverter;
+    private final TransfertFeign transfertFeign;
 
     final AgentRepository agentRepository;
 
