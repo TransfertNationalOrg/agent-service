@@ -37,6 +37,4 @@ public class Agent {
     protected String matricule;
 
 
-    protected Set<Long> transfertsIds;
-
 }
