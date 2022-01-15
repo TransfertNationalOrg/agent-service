@@ -54,9 +54,9 @@ public class AgentController {
     }
 
     //Get all transferts by agent from transfert-service
-    @GetMapping("/allTransferts/{idAgent}")
-    public List<TransfertDTO> getAllTransfertsByAgent(@PathVariable("idAgent") Long idAgent){
-        return transfertFeign.getTransfertsByAgent(idAgent);
+    @GetMapping("/allTransferts/{id}")
+    public List<TransfertDTO> getAllTransfertsByAgent(@PathVariable("id") Long id){
+        return transfertFeign.getTransfertsByAgent(id);
     }
 
     //Get agent by id
