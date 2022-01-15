@@ -8,6 +8,6 @@ import java.util.List;
 
 @FeignClient(name="transfert-service")
 public interface TransfertFeign {
-    @GetMapping("/transfert/{idAgent}")
-    List<TransfertDTO> getTransfertsByAgent(@PathVariable("idAgent") Long idClient);
+    @GetMapping("/transfert/agent/{id}")
+    List<TransfertDTO> getTransfertsByAgent(@PathVariable("id") Long id);
 }
