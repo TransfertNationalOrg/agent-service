@@ -35,6 +35,5 @@ public class Agent {
     protected Long gsm;
     protected String email;
     protected String matricule;
-
-
+    protected double solde;
 }
