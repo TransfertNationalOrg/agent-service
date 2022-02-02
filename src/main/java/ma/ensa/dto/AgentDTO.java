@@ -28,6 +28,7 @@ public class AgentDTO {
     protected String ville;
     protected Long gsm;
     protected String email;
+    protected String password;
     protected String matricule;
     protected ROLE role;
     protected double solde;

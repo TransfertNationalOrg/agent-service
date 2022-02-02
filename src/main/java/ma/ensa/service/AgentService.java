@@ -5,7 +5,6 @@ import ma.ensa.exception.NotFoundException;
 import ma.ensa.model.Agent;
 
 import java.util.List;
-
 public interface AgentService {
 
     Agent save(Agent agent) throws DuplicatedException;

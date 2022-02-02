@@ -3,6 +3,7 @@ package ma.ensa.model;
 import lombok.Data;
 import ma.ensa.model.enumer.IDENTITE;
 import ma.ensa.model.enumer.PAYS;
+import ma.ensa.model.enumer.ROLE;
 import ma.ensa.model.enumer.TITRE;
 
 import javax.persistence.Entity;
@@ -34,6 +35,8 @@ public class Agent {
     protected String ville;
     protected Long gsm;
     protected String email;
+    protected String password;
     protected String matricule;
     protected double solde;
+    protected ROLE role;
 }
