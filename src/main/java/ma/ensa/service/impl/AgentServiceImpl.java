@@ -1,6 +1,7 @@
 package ma.ensa.service.impl;
 
 import lombok.Data;
+import ma.ensa.dto.AgentDTO;
 import ma.ensa.exception.DuplicatedException;
 import ma.ensa.exception.NotFoundException;
 import ma.ensa.model.Agent;
@@ -45,5 +46,10 @@ public class AgentServiceImpl implements AgentService {
     @Override
     public List<Agent> findAll() {
         return agentRepository.findAll();
+    }
+
+    @Override
+    public Agent findByEmail(String email) {
+        return agentRepository.findByEmail(email);
     }
 }
