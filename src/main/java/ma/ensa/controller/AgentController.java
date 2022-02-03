@@ -3,6 +3,10 @@ package ma.ensa.controller;
 import lombok.Data;
 import ma.ensa.Transfert.TransfertDTO;
 import ma.ensa.Transfert.TransfertFeign;
+import ma.ensa.client.ClientDTO;
+import ma.ensa.client.ClientFeign;
+import ma.ensa.client.CompteDTO;
+import ma.ensa.client.CompteFeign;
 import ma.ensa.converter.AgentConverter;
 import ma.ensa.converter.CurrentAgentConverter;
 import ma.ensa.dto.AgentDTO;
@@ -30,6 +34,8 @@ public class AgentController {
     private final CurrentAgentRepository currentAgentRepository;
     private final CurrentAgentService currentAgentService;
     private  final CurrentAgentConverter currentAgentConverter;
+    private final CompteFeign compteFeign;
+    private final ClientFeign clientFeign;
 
     final AgentRepository agentRepository;
 
@@ -90,10 +96,37 @@ public class AgentController {
         return ResponseEntity.ok().body(currentAgentConverter.convertToDTO(currentAgentService.update(currentAgent)));
     }
 
+    //GESTION DES CLIENTS ET LEUR COMPTE
     //Get current agent
     @GetMapping("/")
     public ResponseEntity<?> getCurrentAgent(){
         return ResponseEntity.ok().body(currentAgentConverter.convertToDTO(currentAgentRepository.findById(1L).get()));
     }
+
+    //Add a client
+    @PostMapping("/client/")
+    public ClientDTO saveClient(@RequestBody ClientDTO clientDTO){
+        return clientFeign.save(clientDTO);
+    }
+
+    //Update a client
+    @PutMapping("/client/")
+    public ClientDTO updateClient(@RequestBody ClientDTO clientDTO){
+        return clientFeign.update(clientDTO);
+    }
+
+    //Add a compte
+    @PostMapping("/compte/")
+    public CompteDTO saveCompte(@RequestBody CompteDTO compteDTO){
+        return compteFeign.save(compteDTO);
+    }
+
+    //Update a compte
+    @PutMapping("/compte/")
+    public ClientDTO updateCompte(@RequestBody CompteDTO compteDTO){
+        return compteFeign.update(compteDTO);
+    }
+
+
 
 }
