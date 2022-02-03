@@ -115,6 +115,17 @@ public class AgentController {
         return clientFeign.update(clientDTO);
     }
 
+    @GetMapping("/client/")
+    public List<ClientDTO> getAllClients(){
+        return clientFeign.getAll();
+    }
+
+    @GetMapping("/client/{id}")
+    public ClientDTO getClientById(@PathVariable("id") Long id){
+        return clientFeign.getClientById(id);
+    }
+
+
     //Add a compte
     @PostMapping("/compte/")
     public CompteDTO saveCompte(@RequestBody CompteDTO compteDTO){
@@ -126,6 +137,13 @@ public class AgentController {
     public ClientDTO updateCompte(@RequestBody CompteDTO compteDTO){
         return compteFeign.update(compteDTO);
     }
+
+    //Get compte by id
+    @GetMapping("/compte/{id}")
+    public CompteDTO getCompteById(@PathVariable("id") Long id){
+        return compteFeign.getCompteById(id);
+    }
+
 
 
 

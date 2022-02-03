@@ -1,9 +1,9 @@
 package ma.ensa.client;
 
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @FeignClient(name = "client-service")
 public interface CompteFeign {
@@ -12,4 +12,10 @@ public interface CompteFeign {
 
     @PutMapping("/compte/")
     ClientDTO update(@RequestBody CompteDTO compteDTO);
+
+    @GetMapping("/client/")
+    List<CompteDTO> getAllCompte();
+
+    @GetMapping("/client/{id}")
+    CompteDTO getCompteById(@PathVariable("id") Long id);
 }
