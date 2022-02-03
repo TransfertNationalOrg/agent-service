@@ -3,6 +3,8 @@ package ma.ensa.controller;
 import lombok.Data;
 import ma.ensa.Transfert.TransfertDTO;
 import ma.ensa.Transfert.TransfertFeign;
+import ma.ensa.beneficiaire.BeneficiaireDTO;
+import ma.ensa.beneficiaire.BeneficiaireFeign;
 import ma.ensa.client.ClientDTO;
 import ma.ensa.client.ClientFeign;
 import ma.ensa.client.CompteDTO;
@@ -36,6 +38,7 @@ public class AgentController {
     private  final CurrentAgentConverter currentAgentConverter;
     private final CompteFeign compteFeign;
     private final ClientFeign clientFeign;
+    private final BeneficiaireFeign beneficiaireFeign;
 
     final AgentRepository agentRepository;
 
@@ -144,7 +147,22 @@ public class AgentController {
         return compteFeign.getCompteById(id);
     }
 
-
+    //GESTION DES BENEFICIAIRES
+    //Add a beneficiaire
+    @PostMapping("/beneficiaire/")
+    public BeneficiaireDTO saveBeneficiaire(@RequestBody BeneficiaireDTO beneficiaireDTO){
+        return beneficiaireFeign.save(beneficiaireDTO);
+    }
+    //Update a beneficiaire
+    @PutMapping("/beneficiaire/")
+    public BeneficiaireDTO udpateBenefiaire(@RequestBody BeneficiaireDTO beneficiaireDTO){
+        return beneficiaireFeign.update(beneficiaireDTO);
+    }
+    //Get beneficiaire by id
+    @GetMapping("/beneficiaire/{id}")
+    public BeneficiaireDTO getBeneficiaireById(@PathVariable("id") Long id){
+        return beneficiaireFeign.getBeneficiaireById(id);
+    }
 
 
 }

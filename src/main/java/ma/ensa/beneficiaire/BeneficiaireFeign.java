@@ -1,8 +1,7 @@
 package ma.ensa.beneficiaire;
 
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,4 +14,12 @@ public interface BeneficiaireFeign {
     //Get a beneficiaire by id from beneficiaire-service
     @GetMapping("beneficiaire/{idBeneficiaire}")
     BeneficiaireDTO getBeneficiaireById(@PathVariable("id") Long id);
+
+    //Add beneficiaire
+    @PostMapping("/beneficiaire/")
+    BeneficiaireDTO save(@RequestBody BeneficiaireDTO beneficiaireDTO);
+
+    //Update beneficiaire
+    @PutMapping("/beneficiaire/")
+    BeneficiaireDTO update(@RequestBody BeneficiaireDTO beneficiaireDTO);
 }
