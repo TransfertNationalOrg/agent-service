@@ -1,8 +1,8 @@
 package ma.ensa.beneficiaire;
 
 import lombok.Data;
-import ma.ensa.agent.enumer.PAYS;
-import ma.ensa.agent.enumer.TITRE;
+import ma.ensa.model.enumer.PAYS;
+import ma.ensa.model.enumer.TITRE;
 
 @Data
 public class BeneficiaireDTO {

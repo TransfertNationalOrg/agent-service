@@ -27,5 +27,6 @@ public class ClientDTO {
     protected Long gsm;
     protected String email;
     protected String password;
+    protected Long idClient;
 
 }
