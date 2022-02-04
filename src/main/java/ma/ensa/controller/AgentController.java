@@ -101,7 +101,7 @@ public class AgentController {
 
     //GESTION DES CLIENTS ET LEUR COMPTE
     //Get current agent
-    @GetMapping("/")
+    @GetMapping("/currentAgent")
     public ResponseEntity<?> getCurrentAgent(){
         return ResponseEntity.ok().body(currentAgentConverter.convertToDTO(currentAgentRepository.findById(1L).get()));
     }
